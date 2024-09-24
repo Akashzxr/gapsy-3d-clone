@@ -107,3 +107,63 @@ canvas{
   width: 38%;
   z-index: 1;
 }
+
+.footer-link{
+  position: relative;
+  display: inline-block;
+}
+
+.footer-link:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0px;
+  left: 0;
+  background-color: black;
+  transform-origin: center center;
+  transition: transform 0.25s ease-out;
+}
+
+.footer-link:hover:after {
+  transform: scaleX(1);
+  transform-origin: center center;
+}
+
+.more-btn{
+  position: relative;
+  display: inline-block;
+}
+
+
+
+.more-btn:after{
+  content: '';
+  background-color: white;
+  width: 100%;
+  height: 2.5rem;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  border-radius: 5px;
+  transform: scaleY(0);
+  transform-origin: center bottom;
+  transition: transform 0.35s ease-out;
+  z-index: 2;
+}
+
+.more-btn:hover:after {
+  transform: scaleY(1);
+  transform-origin: center bottom;
+}
+
+.more-btn:hover{
+  color: black;
+}
+
+
+.more-btn:hover .content,
+.more-btn:hover ~ .content {
+    color: black;
+}

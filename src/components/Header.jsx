@@ -10,8 +10,8 @@ function Header() {
       </div>
 
       <div className='flex gap-2'>
-        <button className='w-12 h-10 rounded-md bg-black'><FontAwesomeIcon className='text-white' icon={faBars}/></button>
-        <button className='w-20 h-10 rounded-md bg-black text-white'>Hire Us</button>
+        <button className='more-btn w-12 h-10 rounded-md bg-black'><FontAwesomeIcon className='content text-white relative z-10' icon={faBars}/></button>
+        <button className='more-btn w-20 h-10 rounded-md bg-black text-white'><span className='content relative z-10'>Hire Us</span></button>
       </div>
     </div>
   )
