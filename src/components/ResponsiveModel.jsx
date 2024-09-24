@@ -13,6 +13,7 @@ import { DirectionalLight } from "three";
 import { useScroll } from "@react-three/drei";
 import { Model } from "./Landscape";
 import { log } from "three/webgpu";
+import Loader from "./Loader";
 
 const Newmodel = ({ ...props }) => {
   const computer = useGLTF("/landscape.glb");
@@ -61,6 +62,8 @@ const Newmodel = ({ ...props }) => {
 
 useGLTF.preload("/landscape.glb");
 
+
+
 const RespomsiveCanvas = () => {
   const ref = useRef();
   return (
@@ -72,7 +75,7 @@ const RespomsiveCanvas = () => {
         /* position: [0, 280, 1670], */ fov: 25,
       }}
     >
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loader/>}>
         <ScrollControls
           hideScrollbar={true}
           pages={5}
@@ -81,6 +84,7 @@ const RespomsiveCanvas = () => {
         >
           <Newmodel />
         </ScrollControls>
+        
       </Suspense>
     </Canvas>
   );
