@@ -13,16 +13,39 @@ const Newmodel = ({...props}) => {
   const ref = useRef();
  // const ref = useRef()
   const scroll = useScroll()
- 
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/landscape.glb')
   const { actions } = useAnimations(animations, group)
 
+  //resizing function
+  const [windowWidth, setWindowWidth] = useState(0);
+  const [windowHeight, setWindowHeight] = useState(0);
+  let resizeWindow = () => {
+    setWindowWidth(window.innerWidth);
+    setWindowHeight(window.innerHeight);
+    console.log(windowHeight + "," + windowWidth);
+  };
+
+  useEffect(() => {
+    resizeWindow();
+    window.addEventListener("resize", resizeWindow);
+  }, [windowHeight, windowWidth]);
 
   
   useFrame(() => {
-    camera.lookAt(0, 280, 100);
-    ref.current.position.x = scroll.offset * -17000;
+    /* camera.lookAt(0, 280, 100);
+    ref.current.position.x = scroll.offset * -17000; */
+
+    if (windowWidth < 600) {
+      camera.lookAt(-500, 280, 100);
+      ref.current.position.x = scroll.offset * -18000;
+      camera.position.set(-500, 280, 1770);
+    }
+    else{
+      camera.lookAt(0, 280, 100);
+      ref.current.position.x = scroll.offset * -17000;
+      camera.position.set(0, 280, 1670);
+    }
     
   });
 
@@ -42,7 +65,7 @@ const ModelCanvas = () => {
     const ref = useRef();
   return (
     <Canvas style={{ width: "100%", height: "100%" }}
-    camera={{ near: 0.1, far: 80000.0,  position: [0, 280, 1670], fov: 25  }} >
+    camera={{ near: 0.1, far: 80000.0,  /* position: [0, 280, 1670], */ fov: 25  }} >
     <Suspense fallback={null}>
     <ScrollControls  hideScrollbar={true} pages={5} distance={1} damping={0.5}>
         <Newmodel/>
