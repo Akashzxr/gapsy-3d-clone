@@ -653,6 +653,7 @@ export function Model(props) {
             portal={{ current: gl.domElement.parentNode }}
             scale={100}
             position={[-3040, 190, 0]}
+            
           >
             <div className="flex w-max items-center">
               <div className="rock-salt-regular first-text">
